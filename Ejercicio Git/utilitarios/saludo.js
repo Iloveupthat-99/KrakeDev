@@ -6,12 +6,19 @@ saludar=function(){
     let mensaje=nombre+' '+apellido+' su edad es '+edad+' y su altura es de '+estatura;
     mostrarTexto('resultado', mensaje);
     mostrarImagen('niceGif', './imagenes/thatsNice.gif')
+    mostrarTextoEnCaja('txtNombre', ' ');
+}
+
+mostrarTextoEnCaja=function(idComponente, mensaje){
+    let componente=document.getElementById(idComponente);
+    componente.value=mensaje;
 }
 
 mostrarTexto=function(idComponente, mensaje){
     let componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
 }
+
 mostrarImagen=function(idComponente, rutaImagen){
     let componente=document.getElementById(idComponente);
     componente.src=rutaImagen;
