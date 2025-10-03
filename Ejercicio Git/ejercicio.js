@@ -1,4 +1,5 @@
 saludar=function(){
     console.log('Ingresa a saludar');
-    mostrarImagen('catGif', './imagenes/cartoons.gif');
+    let mostrarImagen = document.getElementById('catGif',);
+    mostrarImagen.src='./imagenes/cartoons.gif';
 }
