@@ -75,3 +75,7 @@ body{
 .content2{
     background-color: rgba(0, 255, 255, 0.575);
 }
+.provincia{
+    display: flex;
+    justify-content: center;
+}

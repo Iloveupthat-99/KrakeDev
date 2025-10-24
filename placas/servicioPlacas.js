@@ -42,3 +42,60 @@ check=function(caracterx, tipoC, puesto){
         return mensaje;
     }
 }
+
+obtenerProvincia=function(placa){
+
+    let primerCaracterASCII = placa.charCodeAt(0); 
+
+    let provincia = "Provincia no identificada";
+
+    if (primerCaracterASCII === 65) { // A
+        provincia = "Azuay";
+    } else if (primerCaracterASCII === 66) { // B
+        provincia = "Bolivar";
+    } else if (primerCaracterASCII === 67) { // C
+        provincia = "Carchi";
+    } else if (primerCaracterASCII === 69) { // E
+        provincia = "Esmeraldas";
+    } else if (primerCaracterASCII === 71) { // G
+        provincia = "Guayas";
+    } else if (primerCaracterASCII === 72) { // H
+        provincia = "Chimborazo";
+    } else if (primerCaracterASCII === 73) { // I
+        provincia = "Imbabura";
+    } else if (primerCaracterASCII === 75) { // K
+        provincia = "Sucumbios";
+    } else if (primerCaracterASCII === 76) { // L
+        provincia = "Loja";
+    } else if (primerCaracterASCII === 77) { // M
+        provincia = "Manabi";
+    } else if (primerCaracterASCII === 78) { // N
+        provincia = "Napo";
+    } else if (primerCaracterASCII === 79) { // O
+        provincia = "El Oro";
+    } else if (primerCaracterASCII === 80) { // P
+        provincia = "Pichincha";
+    } else if (primerCaracterASCII === 81) { // Q
+        provincia = "Orellana";
+    } else if (primerCaracterASCII === 82) { // R
+        provincia = "Los Rios";
+    } else if (primerCaracterASCII === 83) { // S
+        provincia = "Pastaza";
+    } else if (primerCaracterASCII === 84) { // T
+        provincia = "Tungurahua";
+    } else if (primerCaracterASCII === 85) { // U
+        provincia = "Caniar";
+    } else if (primerCaracterASCII === 87) { // W
+        provincia = "Galapagos";
+    } else if (primerCaracterASCII === 88) { // X
+        provincia = "Cotopaxi";
+    } else if (primerCaracterASCII === 89) { // Y
+        provincia = "Santa Elena";
+    } else if (primerCaracterASCII === 90) { // Z
+        provincia = "Zamora Chinchipe";
+    } else {
+        return null;
+    }
+
+    return provincia;
+}
