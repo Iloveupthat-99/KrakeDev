@@ -10,6 +10,12 @@ validarPlaca=function(){
         }else{
             mostrarTexto('provincia', 'Provincia incorrecta');
         }
+        let vehiculo=obtenerTipoVehiculo(placa);
+        if(vehiculo != null){
+            mostrarTexto('lblVehiculo', vehiculo);
+        }else{
+            mostrarTexto('lblVehiculo', 'Vehiculo incorrecto');
+        }
     }else{
         mostrarTexto('lblValidacion', 'Estructura INCORRECTA');
         mostrarTexto('lblError', erroresEstructura);
