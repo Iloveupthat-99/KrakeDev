@@ -127,3 +127,33 @@ obtenerTipoVehiculo=function(placa){
     }
     
 }
+obtenerDiaPicoYPlaca=function(placa){
+    let placa3=placa.length;
+    let letra=placa3-1;
+    let ultimaPoisicion=placa.charCodeAt(letra);
+    let diaPicoYPlaca=''
+    if(ultimaPoisicion == 49 || ultimaPoisicion == 50){
+        diaPicoYPlaca='Lunes'
+        return diaPicoYPlaca;
+    }else if(ultimaPoisicion == 51 || ultimaPoisicion == 52){
+        diaPicoYPlaca='Martes'
+        return diaPicoYPlaca;
+    
+    }else if(ultimaPoisicion == 53 || ultimaPoisicion == 54){
+        diaPicoYPlaca='Miercoles'
+        return diaPicoYPlaca;
+    
+    }else if(ultimaPoisicion == 55 || ultimaPoisicion == 56){
+        diaPicoYPlaca='Jueves'
+        return diaPicoYPlaca;
+    
+    }else if(ultimaPoisicion == 57 || ultimaPoisicion == 48){
+        diaPicoYPlaca='Viernes'
+        return diaPicoYPlaca;
+    }else{
+        return null;
+    }
+    
+    
+
+}

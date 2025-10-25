@@ -16,8 +16,23 @@ validarPlaca=function(){
         }else{
             mostrarTexto('lblVehiculo', 'Vehiculo incorrecto');
         }
+        let diaPicoYPlaca=obtenerDiaPicoYPlaca(placa);
+        if(diaPicoYPlaca != null){
+            mostrarTexto('lblPicoYPlaca', diaPicoYPlaca);
+        }else{
+            mostrarTexto('lblPicoYPlaca', 'Fines de semana y feriados dias libres');
+        }
     }else{
         mostrarTexto('lblValidacion', 'Estructura INCORRECTA');
         mostrarTexto('lblError', erroresEstructura);
     }
+}
+limpiar=function(){
+    mostrarTexto('lblValidacion', '');
+    mostrarTexto('provincia', '');
+    mostrarTexto('lblVehiculo', '');
+    mostrarTexto('lblPicoYPlaca', '');
+    mostrarTexto('lblValidacion', '');
+    mostrarTexto('lblError', '');
+    mostrarTextoEnCaja('txtPlaca', '');
 }
