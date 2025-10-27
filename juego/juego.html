@@ -20,9 +20,14 @@
                     <img src="./imagenes/paper.png" width="50px" onclick="jugar('paper');"/>
                     <img src="./imagenes/rock.png" width="50px" onclick="jugar('rock');"/>
                     <img src="" id="imgJuego" width="50px"/>
+                    <input type="button" value="INICIAR NUEVA PARTIDA" onclick="limpiar();"/>
                 </div>
             </div>
             <div class="texts">
+                <div>Puntos Usuario:</div>
+                <div id="lblPuntosUsuario">0</div>
+                <div>Puntos Computador</div>
+                <div id="lblPuntosComputador">0</div>
                 <div id="lblResult"></div>
             </div>
         </div>
