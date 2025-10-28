@@ -77,10 +77,10 @@ ingresarLetra=function(){
         validar(letro);
         intentos++;
         if(coincidencias == 5){
-            alert('Has ganado HDP');
+            mostrarImagen('ahorcadoImagen', 'ganador.gif');
         }
-        if(intentos == 10){
-            alert('La has regao');
+        if(errores == 9){
+            mostrarImagen('ahorcadoImagen', 'gameOver.gif');
         }
     }else{
         alert('SOLO SE ACEPTAN MAYUSCULAS');
@@ -94,7 +94,5 @@ mostrarAhorcado=function(){
         txt='Ahorcado_0'+errores+'.png';
         mostrarImagen('ahorcadoImagen', txt);
     }
-    if(errores==10){
-        mostrarImagen('ahorcadoImagen', 'Ahorcado_09.png');
-    }
+    
 }
