@@ -59,13 +59,15 @@ validar=function(letra){
         letter=palabraSecreta.charAt(valido);
         if(letter==letra){
             mostrarLetra(letra, valido);
+            same=true;
             letrasEncontradas++;
             coincidencias++;
         }
     }
-    if(letter!=letra){
+    if(!same){
         alert('LA LETRA NO ES PARTE DE LA PALABRA');
         errores++;
+        mostrarAhorcado();
     }
 }
 
@@ -82,5 +84,17 @@ ingresarLetra=function(){
         }
     }else{
         alert('SOLO SE ACEPTAN MAYUSCULAS');
+    }
+}
+
+mostrarAhorcado=function(){
+    let txt='Ahorcado_0'+errores+'.png';
+   
+    for(let nose=0;nose<errores+1;nose++){
+        txt='Ahorcado_0'+errores+'.png';
+        mostrarImagen('ahorcadoImagen', txt);
+    }
+    if(errores==10){
+        mostrarImagen('ahorcadoImagen', 'Ahorcado_09.png');
     }
 }
