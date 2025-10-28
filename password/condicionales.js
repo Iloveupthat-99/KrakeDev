@@ -100,7 +100,6 @@ esDigito=function(caracter){
     }
 }
 
-
 darPermiso=function(notaMatematica, notaFisica, notaGeometria){
     let matemtcFloat=recuperarFloat(notaMatematica);
     let fisicFloat=recuperarFloat(notaFisica);
@@ -133,5 +132,3 @@ dejarSalir=function(notaMatematica, notaFisica, notaGeometria){
         return false;
     }
 }
-
-
