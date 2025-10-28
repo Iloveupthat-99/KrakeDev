@@ -60,3 +60,12 @@ validar=function(letra){
         }
     }
 }
+
+ingresarLetra=function(){
+    let letro=recuperarTexto('txtLetra');
+    if(esMayuscula(letro)){
+        validar(letro);
+    }else{
+        alert('SOLO SE ACEPTAN MAYUSCULAS');
+    }
+}
