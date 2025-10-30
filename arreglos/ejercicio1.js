@@ -21,6 +21,7 @@ probarAgregarNota=function(){
 
 agregarNota=function(nota){
     notas.push(nota);
+    mostrarNotas();
 }
 
 calcularPromedio=function(){
@@ -37,4 +38,25 @@ calcularPromedio=function(){
 ejecutarPromedio=function(){
     let result=calcularPromedio();
     mostrarTexto('lblPromedio', result);
+}
+
+generarTabla=function(){
+    let content='';
+    let cmpTabla=document.getElementById('lblTabla');
+    content+='<table><tr><td>UNO</td></tr></table>'+'<table><tr><td>DOS</td></tr></table>';
+    cmpTabla.innerHTML=content;
+}
+
+mostrarNotas=function(){
+    let cmpTabla=document.getElementById('lblTabla');
+    let content='<table><tr><td>NOTAS</td></tr></table>'+'<table>';
+    let miNota;
+    for(let i=0;i<notas.length;i++){
+        miNota=notas[i];
+        content+='<tr><td>';
+        content+=miNota;
+        content+='</td></tr>';
+    }
+    content+='</table>';
+    cmpTabla.innerHTML=content;
 }
