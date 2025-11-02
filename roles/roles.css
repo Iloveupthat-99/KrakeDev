@@ -99,7 +99,47 @@ tbody tr:nth-child(odd) {
   }
   .areaTabla{
     margin-top: 20px;
+    
+
   }
+  td:nth-of-type(1) 
+  {
+    background-color: aqua;
+    border-radius: 12px;
+    font-size: 12px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  td:nth-of-type(3) 
+  {
+    background-color: cyan;
+    border-radius: 12px;
+    font-style: normal;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+  td:nth-of-type(2) 
+  {
+    background-color: chartreuse;
+    border-radius: 12px;
+    font-style: italic;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  td:nth-of-type(4) 
+  {
+    background-color: darkcyan;
+    border-radius: 12px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  tr:nth-of-type(1) > th 
+  {
+    background-color: chocolate;
+    border-radius: 5px;
+  }
+
 .estiloBoton:hover {
     background-color:white; 
     color: #217023;
