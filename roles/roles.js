@@ -59,16 +59,16 @@ ejecutarNuevo = function () {
 
 buscarEmpleado = function (cedula) {
     let empleadoEncontrado;
-    let valid=0; 
+    let valid = 0;
     for (i = 0; i < empleados.length; i++) {
         empleadoEncontrado = empleados[i];
         if (empleadoEncontrado.cedula == cedula) {
             valid++;
         }
     }
-    if(valid==1){
+    if (valid == 1) {
         return empleadoEncontrado;
-    }else{
+    } else {
         return null;
     }
 }
@@ -87,44 +87,49 @@ agregarEmpleado = function (empleado) {
 
 guardar = function () {
     let valido;
-    let validC=false;
-    let validN=false;
-    let validA=false;
-    let validS=false;
-    
+    let validC;
+    let validN;
+    let validA;
+    let validS;
+    let contador = 0;
+
     let cedula = recuperarTexto('txtCedula');
-    if(cedula.length==10){
-        valido=validarLength('Cedula', cedula, 'DIGITOS UNICAMENTE');
-        validC=true;
-    }else{
+    if (cedula.length == 10) {
+        validC = validarLength('Cedula', cedula, 'DIGITOS UNICAMENTE');
+        contador++;
+    } else {
         mostrarTexto('lblErrorCedula', 'DEBE CONTENER 10 DIGITOS');
+        contador--;
     }
     let nombre = recuperarTexto('txtNombre');
-    if(nombre.length>2){
-        valido=validarLength('Nombre', nombre, 'Mayusculas UNICAMENTE');
-        validN=true;
-    }else{
+    if (nombre.length > 2) {
+        validN = validarLength('Nombre', nombre, 'Mayusculas UNICAMENTE');
+        contador++;
+    } else {
         mostrarTexto('lblErrorNombre', 'DEBE CONTENER MINIMO 3 CARACTERES');
+        contador--;
     }
     let apellido = recuperarTexto('txtApellido');
-    if(apellido.length>2){
-        valido=validarLength('Apellido', apellido, 'Mayusculas UNICAMENTE');
-        validA=true;
-    }else{
+    if (apellido.length > 2) {
+        validA = validarLength('Apellido', apellido, 'Mayusculas UNICAMENTE');
+        contador++;
+    } else {
         mostrarTexto('lblErrorApellido', 'DEBE CONTENER MINIMO 3 CARACTERES');
+        contador--;
     }
     let sueldo = recuperarTexto('txtSueldo');
-    if(sueldo>399 && sueldo <5001){
-        valido=validarLength('Sueldo', sueldo, '*DEBE CONTENER NUMEROS FLOAT(DECIMALES)');
-        validS=true;
-    }else{
+    if (sueldo > 399 && sueldo < 5001) {
+        validS = validarLength('Sueldo', sueldo, '*DEBE CONTENER NUMEROS FLOAT(DECIMALES)');
+        contador++;
+    } else {
         mostrarTexto('lblErrorSueldo', 'DEBE CONTENER VALORES ENTRE 400 Y 5000');
+        contador--;
     }
-    
-    if (valido && validC && validN && validA && validS) {
+
+    if (validC && validN && validA && validS && (contador == 4)) {
         let empleado;
         let completeSave;
-        let ultimoObje=empleados.length-1;
+        let ultimoObje = empleados.length - 1;
         if (esNuevo) {
             empleado = {}
             empleado.cedula = cedula;
@@ -149,44 +154,63 @@ guardar = function () {
 
 }
 
-validarLength=function(cmp, caracter, mensaje,){
-    let validosCountD=0;
-    let validosCountM=0;
-    let validosCountFloat=0;
+validarLength = function (cmp, caracter, mensaje,) {
+    let validosCountD = 0;
+    let validosCountM = 0;
+    let validosCountFloat = 0;
     let Caracter;
-    let validos=false;
-    for(i=0;i<caracter.length;i++){
-        Caracter=caracter[i];
-        if(esDigito(Caracter)){
-            validos=true;
+    let validos = false;
+    for (i = 0; i < caracter.length; i++) {
+        Caracter = caracter[i];
+        if (esDigito(Caracter)) {
+            validos = true;
             validosCountD++;
-            
-        }else if(esMayuscula(Caracter)){
-            validos=true;
+
+        } else if (esMayuscula(Caracter)) {
+            validos = true;
             validosCountM++;
-            
-        }else if(parseFloat(Caracter)){
-            validos=true;
+
+        } else if (parseFloat(Caracter)) {
+            validos = true;
             validosCountFloat++;
         }
     }
-    if(validos && (validosCountD==caracter.length)){
-        mostrarTexto('lblError'+cmp, '');
+    if (validos && (validosCountD == caracter.length)) {
+        mostrarTexto('lblError' + cmp, '');
         return true;
-    }else if(validos && (validosCountM==caracter.length)){
-        mostrarTexto('lblError'+cmp, '');
+    } else if (validos && (validosCountM == caracter.length)) {
+        mostrarTexto('lblError' + cmp, '');
         return true;
-    }else if(validos && (validosCountFloat==caracter.length)){
-        mostrarTexto('lblError'+cmp, '');
+    } else if (validos && (validosCountFloat == caracter.length)) {
+        mostrarTexto('lblError' + cmp, '');
         return true;
-    }else{
-        mostrarTexto('lblError'+cmp, '*DEBE CONTENER '+mensaje);
+    } else {
+        mostrarTexto('lblError' + cmp, '*DEBE CONTENER ' + mensaje);
         return false;
     }
 }
-validarCaracter=function(caracter, valid){
-    
+validarCaracter = function (caracter, valid) {
+
+}
+
+deshabilitarComponentes = function (condicion) {
+    document.body.onload();
+
+    if (condicion) {
+        deshabilitarComponente('txtCedula');
+        deshabilitarComponente('txtNombre');
+        deshabilitarComponente('txtApellido');
+        deshabilitarComponente('txtSueldo');
+        deshabilitarComponente('btnGuardar');
+    }
+
 }
 
 
-
+document.body.onload = function () {
+    deshabilitarComponente('txtCedula');
+    deshabilitarComponente('txtNombre');
+    deshabilitarComponente('txtApellido');
+    deshabilitarComponente('txtSueldo');
+    deshabilitarComponente('btnGuardar');
+}

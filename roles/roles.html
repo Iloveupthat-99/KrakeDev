@@ -8,7 +8,14 @@
         <script src="condicionales.js"></script>
     </head>
 
-    <body onload="mostrarOpcionEmpleado();">
+    <body onload="mostrarOpcionEmpleado();
+            deshabilitarComponente('txtCedula');
+            deshabilitarComponente('txtNombre');
+            deshabilitarComponente('txtApellido');
+            deshabilitarComponente('txtSueldo');
+            deshabilitarComponente('btnGuardar');"
+        
+        >
         
         <div class="menu">
             <div class="contenedorBoton">
