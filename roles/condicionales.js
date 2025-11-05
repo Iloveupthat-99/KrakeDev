@@ -134,12 +134,4 @@ dejarSalir=function(notaMatematica, notaFisica, notaGeometria){
     }
 }
 
-validarLength=function(caracter, n1, n2){
-    if(caracter < n1 || caracter > n2){
-        return false;
-    }else{
-        return true;
-    }
-}
-
 
