@@ -87,33 +87,41 @@ agregarEmpleado = function (empleado) {
 
 guardar = function () {
     let valido;
+    let validC=false;
+    let validN=false;
+    let validA=false;
+    let validS=false;
     
     let cedula = recuperarTexto('txtCedula');
     if(cedula.length==10){
         valido=validarLength('Cedula', cedula, 'DIGITOS UNICAMENTE');
+        validC=true;
     }else{
         mostrarTexto('lblErrorCedula', 'DEBE CONTENER 10 DIGITOS');
     }
     let nombre = recuperarTexto('txtNombre');
     if(nombre.length>2){
         valido=validarLength('Nombre', nombre, 'Mayusculas UNICAMENTE');
+        validN=true;
     }else{
         mostrarTexto('lblErrorNombre', 'DEBE CONTENER MINIMO 3 CARACTERES');
     }
     let apellido = recuperarTexto('txtApellido');
     if(apellido.length>2){
         valido=validarLength('Apellido', apellido, 'Mayusculas UNICAMENTE');
+        validA=true;
     }else{
         mostrarTexto('lblErrorApellido', 'DEBE CONTENER MINIMO 3 CARACTERES');
     }
     let sueldo = recuperarTexto('txtSueldo');
     if(sueldo>399 && sueldo <5001){
         valido=validarLength('Sueldo', sueldo, '*DEBE CONTENER NUMEROS FLOAT(DECIMALES)');
+        validS=true;
     }else{
         mostrarTexto('lblErrorSueldo', 'DEBE CONTENER VALORES ENTRE 400 Y 5000');
     }
     
-    if (valido) {
+    if (valido && validC && validN && validA && validS) {
         let empleado;
         let completeSave;
         let ultimoObje=empleados.length-1;
@@ -128,6 +136,12 @@ guardar = function () {
         if (completeSave) {
             alert('EMPLEADO GUARDADO CORRECTAMENTE');
             mostrarEmpleados();
+            deshabilitarComponente('txtCedula');
+            deshabilitarComponente('txtNombre');
+            deshabilitarComponente('txtApellido');
+            deshabilitarComponente('txtSueldo');
+            deshabilitarComponente('btnGuardar');
+
         } else {
             alert('YA EXISTE UN EMPLEADO CON LA CEDULA: ' + empleados[ultimoObje].cedula);
         }
