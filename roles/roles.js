@@ -254,3 +254,15 @@ limpiar = function () {
     deshabilitarComponentes();
 
 }
+
+buscarPorRol=function(){
+    let cedulaRol=recuperarTexto('txtBusquedaCedulaRol');
+    let encontrado=buscarEmpleado(cedulaRol);
+    if(encontrado){
+        mostrarTexto('infoCedula', encontrado.cedula);
+        mostrarTexto('infoNombre', encontrado.nombre+' '+encontrado.apellido);
+        mostrarTexto('infoSueldo', encontrado.sueldo);
+    }else{
+        alert('EMPLEADO NO ENCONTRADO');
+    }
+}
