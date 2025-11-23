@@ -20,6 +20,8 @@ mostrarOpcionRol = function () {
     mostrarComponente('divRol');
     ocultarComponente('divEmpleado');
     ocultarComponente('divResumen');
+    mostrarRoles();
+
 }
 
 mostrarOpcionResumen = function () {
@@ -335,9 +337,9 @@ calcularAporteEmpleador=function(sueldo){
 }
 
 guardarRol=function(){
-    let valorAPagar=recuperarTextoDiv('infoPago');
-    let valorIESS=recuperarTextoDiv('infoIESS');
-    let sueldo=recuperarTextoDiv('infoSueldo');
+    let valorAPagar=recuperarFloatDiv('infoPago');
+    let valorIESS=recuperarFloatDiv('infoIESS');
+    let sueldo=recuperarFloatDiv('infoSueldo');
     let nombre=recuperarTextoDiv('infoNombre');
     let cedula=recuperarTextoDiv('infoCedula');
     let aporteEmpleador=calcularAporteEmpleador(sueldo);
@@ -349,4 +351,46 @@ guardarRol=function(){
     rol.aporteEmpleador=aporteEmpleador;
     agregarRol(rol);
     deshabilitarComponente('button');
+    mostrarRoles();
+    mostrarTotales();
+}
+
+mostrarRoles=function(){
+    let rcvrd=document.getElementById('tablaResumen');
+    let rol;
+    let tabla='<table><tr>'+
+        '<th>CEDULA</th>'+
+        '<th>NOMBRE</th>'+
+        '<th>VALOR A PAGAR</th>'+
+        '<th>APORTE EMPLEADO</th>'+
+        '<th>APORTE EMPLEADOR</th></tr>';
+    for(i=0;i<roles.length;i++){
+        rol=roles[i];
+        tabla+=
+            '<tr>'+
+            '<td>'+rol.cedula+'</td>'+
+            '<td>'+rol.nombre+'</td>'+
+            '<td>'+rol.valorAPagar+'</td>'+
+            '<td>'+rol.aporteEmpleado+'</td>'+
+            '<td>'+rol.aporteEmpleador+'</td>'+
+            '</tr>';
+    }
+    tabla+='</table>';
+    rcvrd.innerHTML=tabla;
+}
+
+mostrarTotales=function(){
+    let totalEmpleado=0;
+    let totalEmpleador=0;
+    let totalAPagar=0;
+    let rol;
+    for(let i=0;i<roles.length;i++){
+        rol=roles[i];
+        totalEmpleado+=rol.aporteEmpleado;
+        totalEmpleador+=rol.aporteEmpleador;
+        totalAPagar+=rol.valorAPagar;
+    }
+    mostrarTexto('infoTotalPago', totalAPagar);
+    mostrarTexto('infoAporteEmpresa', totalEmpleador);
+    mostrarTexto('infoAporteEmpleado', totalEmpleado);
 }
