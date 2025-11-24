@@ -10,7 +10,7 @@ agregarPersona=function(){
     let name=recuperarTexto('txtNombre');
     let age;
     if(name>2){    
-    age=recuperarTexto('txtApellido');
+    age=recuperarInt('txtApellido');
     }else{
         mostrarTexto('lblError1', 'DEBE CONTENER MINIMO 3 CARACTERES');
     }
@@ -22,4 +22,19 @@ agregarPersona=function(){
         alert('Persona agregada correctamente');
     }
     
+}
+
+mostrarPersonas=function(){
+    let people;
+    let tabla=document.getElementById('tabla');
+    tabla = '<table><tr>'+
+        '<th>Nombre</th>'+
+        '<th>EDAD</th></tr>';
+    for(let i=0;i<personas.length;i++){
+        people=persona[i];
+        tabla+='<tr>'+
+        '<td>'+personas.nombre+'</td>'+
+        '<td>'+personas.edad+'</td><tr>';
+    }
+    tabla+='</table>';
 }
